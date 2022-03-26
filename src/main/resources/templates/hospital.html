@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+hospital:
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+    </tr>
+
+    <a th:href="@{'/hospital'}">
+        <tr th:each="hospital: ${hospitals}">
+            <td th:text="${hospital.id}"></td>
+            <td th:text="${hospital.name}"></td>
+            <td th:text="${hospital.address}"></td>
+            <td th:text="${hospital.phone}"></td>
+            <td><a th:href="@{'/deleteHospital/' + ${hospital.id}}">delete</a></td>
+        </tr>
+    </a>
+
+</table>
+
+    <form action="/addHospital" method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name"><br>
+        <label>Address:</label><br>
+        <input type="text" name="address"><br>
+        <label>Phone:</label><br>
+        <input type="text" name="phone"><br>
+        <input type="submit" value="ADD">
+    </form>
+
+</body>
+</html>
