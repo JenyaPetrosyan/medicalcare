@@ -25,6 +25,7 @@ public class HospitalService {
 
     public List<Hospital> findAll() {
         return hospitalRepository.findAll();
+
     }
 
     public Hospital findById(int companyId) {
