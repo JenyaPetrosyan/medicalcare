@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div th:if="${errors != null && !errors.isEmpty()}">
+    <ul>
+        <li style="color: red" th:each="error: ${errors}" th:text="${error}"></li>
+    </ul>
+ </div>
+
+Save Services
+ <form action="/services/add" method="post">
+    <input th:if="${services!= null}" type="hidden" th:value="${services.id}" name="id">
+    name: <input type="text" name="name" th:value="${service == null} ? '' : ${service.name}"/> <br>
+    picture:<input type="file" name="picture"/><br>
+    Hospitals:
+    <seleqt name="hospital.id">
+        <option th:each="hospital:${hospitals}" th:text="${hospital.name}" th:value="${hopital.id}">
+        </option>
+    </seleqt>
+    <br>
+
+</html>

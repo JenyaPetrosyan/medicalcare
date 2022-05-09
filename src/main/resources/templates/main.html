@@ -5,7 +5,37 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/doctor" > Բժիսկներ   </a><br>
-<a href="/hospital">Բուժ հաստատություններ</a>
+<a href="?lang=hy">Armenian</a> | <a href="?lang=ru">Russian</a> | <a href="?lang=en">English</a>
+<br><br>
+<div th:include="fragments/main-fragment:: login"></div>
+
+<a href="/doctor" >Doctor</a><br>
+<a href="/hospital" >Hospital</a><br>
+<a href="/services" >Services</a><br>
+
+
+
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+    </tr>
+
+    <a th:href="@{'/hospital'}">
+      //  <tr th:each="u:${userPage.content}">
+        <tr th:each="hos: ${hospitals}">
+            <td th:text="${hos.id}"></td>
+            <td th:text="${hos.name}"></td>
+            <td th:text="${hos.address}"></td>
+            <td th:text="${hos.phone}"></td>
+           // <td><a th:href="@{'/items/byUser/' + ${u.id}}">view user items</a> </td>
+            <td th:href="@{'/services/byHospital/'+ ${hos.id}}"></td>
+            <td th:if="${hosptal != null}"><a th:href="@{'/deleteHospital/' + ${hospital.id}}">delete</a> |<a th:href="@{'/editHospital/' + ${hospital.id}}">edit</a>
+        </tr>
+    </a>
+
+    </table>
+
 </body>
 </html>
